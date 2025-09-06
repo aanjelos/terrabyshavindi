@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra | Coming Soon</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        /* Define custom fonts from the local 'font' folder */
+        @font-face {
+            font-family: 'Amontesa';
+            src: url('font/amontesa-amontesa-400.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'August Stories Serif';
+            src: url('font/august-stories-august-stories-serif-400.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Keyframes for the background animation */
+        @keyframes pan-background {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                /* A large value ensures the animation is slow and smooth */
+                background-position: 400px 400px;
+            }
+        }
+
+        /* Custom styles based on the brand guide */
+        body {
+            /* Using the custom Amontesa font for titles */
+            font-family: 'Amontesa', serif;
+            /* Using Eggshell color from the brand guide */
+            background-color: #f3f0df; 
+            
+            /* NEW METHOD: Using an embedded SVG for a reliable, animatable brick pattern.
+              This defines the staggered brick pattern as a graphic, which is more robust
+              than complex CSS gradients. The color #e0dbcf is a semi-transparent version 
+              of the background color, matching the previous subtle effect.
+            */
+            background-image: url("data:image/svg+xml,%3Csvg width='200' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='p' width='200' height='100' patternUnits='userSpaceOnUse'%3E%3Cpath d='M0 50h200 M100 0v50 M0 100h200 M0 50v50 M200 50v50' stroke='%23e0dbcf' stroke-opacity='0.7' stroke-width='1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23p)'/%3E%3C/svg%3E");
+
+            /* Applying the animation - changed from 240s to 60s for a faster effect */
+            animation: pan-background 60s linear infinite;
+        }
+        
+        .text-jet-black {
+            color: #2e2d2c;
+        }
+        .bg-burnt-sienna {
+            background-color: #da8164;
+        }
+        .text-eggshell {
+            color: #f3f0df;
+        }
+        .hover\:bg-burnt-sienna-dark:hover {
+            background-color: #c07151;
+        }
+        .font-body {
+            font-family: 'August Stories Serif', serif;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Main container to center the content -->
+    <main class="flex flex-col items-center justify-center min-h-screen p-6 text-center">
+        
+        <!-- Logo -->
+        <div class="mb-24">
+            <img src="img/logo.svg" alt="Terra Logo" class="h-72 w-auto sm:h-96">
+        </div>
+        
+        <!-- Coming Soon Text -->
+        <h1 class="text-jet-black text-4xl sm:text-5xl tracking-wider font-normal leading-relaxed">
+            Website Coming Soon
+        </h1>
+
+        <!-- Location Icon Link -->
+        <a href="https://maps.app.goo.gl/pwPmLaW6dkcixfbn6" 
+           target="_blank" 
+           rel="noopener noreferrer"
+           aria-label="Find us on Google Maps"
+           class="mt-10 h-16 w-16 rounded-full bg-burnt-sienna text-eggshell flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-burnt-sienna-dark hover:shadow-lg">
+            <!-- SVG Location Icon -->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+            </svg>
+        </a>
+        
+    </main>
+
+</body>
+</html>
+
