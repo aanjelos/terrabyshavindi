@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Journal — Terra by Shavindi</title>
+<meta name="description" id="pageDesc" content="Stories, guides and updates from Terra by Shavindi — terracotta homewear and building materials from Waikkal, Sri Lanka.">
+<meta name="author" content="Terra by Shavindi">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#da8164">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Terra by Shavindi">
+<meta property="og:title" id="ogTitle" content="Journal — Terra by Shavindi">
+<meta property="og:description" id="ogDesc" content="Stories, guides and updates from Terra by Shavindi.">
+<meta property="og:image" content="https://shavindi.lk/img/og-image.jpg">
+<link rel="canonical" id="canonical" href="https://shavindi.lk/blog.html">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7N2EXY70B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y7N2EXY70B');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* ─── TOKENS ─── */
+:root {
+  --burnt-sienna: #da8164;
+  --khaki: #9d9a87;
+  --eggshell: #f3f0df;
+  --eggshell-dark: #e8e4cc;
+  --hunter-green: #2f5b44;
+  --jet-black: #2e2d2c;
+  --font-title: 'Instrument Serif', serif;
+  --font-body: 'Josefin Sans', sans-serif;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── RESET ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); background: var(--eggshell); color: var(--jet-black); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+button { font-family: var(--font-body); border: none; background: none; cursor: pointer; }
+
+/* ─── NOISE OVERLAY ─── */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* ─── HEADER ─── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px;
+  background: rgba(243,240,223,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(157,154,135,0.2);
+  transition: padding var(--transition);
+}
+header.scrolled { padding: 12px 48px; }
+.header-logo { display: flex; align-items: center; gap: 12px; }
+.header-logo img { height: 44px; width: auto; transition: height var(--transition); }
+header.scrolled .header-logo img { height: 34px; }
+.header-logo-text .brand {
+  font-family: var(--font-title); font-size: 1.25rem; color: var(--khaki);
+  letter-spacing: 0.06em; line-height: 1;
+}
+nav { display: flex; align-items: center; gap: 32px; }
+nav a {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--khaki); position: relative; padding-bottom: 2px; transition: color var(--transition);
+}
+nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px;
+  background: var(--burnt-sienna); transition: width var(--transition);
+}
+nav a:hover, nav a.active { color: var(--burnt-sienna); }
+nav a:hover::after, nav a.active::after { width: 100%; }
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+.hamburger span { width: 22px; height: 1.5px; background: var(--khaki); display: block; transition: var(--transition); }
+
+/* ─── MOBILE NAV DRAWER ─── */
+.nav-drawer {
+  position: fixed; top: 0; right: -100%; width: min(320px,85vw); height: 100%;
+  background: var(--eggshell); z-index: 600; padding: 80px 40px 40px;
+  display: flex; flex-direction: column; gap: 32px;
+  transition: right 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+  border-left: 1px solid rgba(157,154,135,0.2);
+}
+.nav-drawer.open { right: 0; }
+.nav-drawer a { font-size: 1.5rem; font-family: var(--font-title); font-style: italic; color: var(--jet-black); }
+.drawer-overlay { position: fixed; inset: 0; background: rgba(46,45,44,0.4); z-index: 590; opacity: 0; visibility: hidden; transition: all 0.4s; }
+.drawer-overlay.open { opacity: 1; visibility: visible; }
+.close-drawer { position: absolute; top: 24px; right: 24px; color: var(--khaki); }
+
+/* ─── JOURNAL HERO ─── */
+.journal-hero {
+  padding: 160px 48px 80px;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+.journal-hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 80% 30%, rgba(218,129,100,0.13) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 10% 80%, rgba(47,91,68,0.07) 0%, transparent 55%);
+}
+.journal-eyebrow {
+  font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--burnt-sienna); margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  animation: fadeUp 0.8s 0.3s both;
+}
+.journal-eyebrow::before, .journal-eyebrow::after { content: ''; width: 28px; height: 1px; background: var(--burnt-sienna); }
+.journal-title {
+  font-family: var(--font-title); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300;
+  line-height: 1.05; color: var(--jet-black);
+  animation: fadeUp 1s 0.5s both;
+}
+.journal-title em { font-style: italic; color: var(--khaki); }
+.journal-subtitle {
+  margin-top: 20px; font-size: 0.82rem; line-height: 1.9; color: var(--jet-black);
+  max-width: 500px; margin-left: auto; margin-right: auto;
+  animation: fadeUp 0.9s 0.7s both;
+}
+@keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+
+/* ─── BACK BUTTON (single post view) ─── */
+.back-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--khaki); margin-bottom: 48px; transition: color var(--transition);
+}
+.back-btn:hover { color: var(--burnt-sienna); }
+
+/* ─── POST LISTING ─── */
+.posts-section { max-width: 1200px; margin: 0 auto; padding: 60px 48px 100px; position: relative; z-index: 2; }
+.posts-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 36px;
+  margin-bottom: 60px;
+}
+.post-card {
+  background: white; overflow: hidden; cursor: pointer;
+  box-shadow: 0 2px 20px rgba(46,45,44,0.06);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.post-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(46,45,44,0.13); }
+.post-card-img {
+  width: 100%; height: 220px; overflow: hidden;
+  background: var(--eggshell-dark); position: relative;
+}
+.post-card-img img { width: 100%; height: 100%; object-fit: cover; object-position: center center; transition: transform 0.7s ease; }
+.post-card:hover .post-card-img img { transform: scale(1.04); }
+.post-card-no-img {
+  width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 8px;
+}
+.post-card-no-img svg { opacity: 0.2; }
+.post-card-body { padding: 28px 28px 32px; }
+.post-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.post-date { font-size: 0.58rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--khaki); }
+.post-category {
+  font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--burnt-sienna); padding: 3px 10px;
+  border: 1px solid rgba(218,129,100,0.4);
+}
+.post-title {
+  font-family: var(--font-title); font-size: 1.45rem; font-weight: 400; line-height: 1.25;
+  color: var(--jet-black); margin-bottom: 12px;
+  transition: color var(--transition);
+}
+.post-card:hover .post-title { color: var(--burnt-sienna); }
+.post-excerpt { font-size: 0.75rem; line-height: 1.85; color: var(--khaki); }
+.post-read-more {
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 20px;
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--burnt-sienna);
+}
+
+/* ─── PAGINATION ─── */
+.pagination { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.page-btn {
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(157,154,135,0.35); font-size: 0.7rem; color: var(--khaki);
+  transition: all var(--transition); cursor: pointer;
+}
+.page-btn:hover, .page-btn.active { border-color: var(--burnt-sienna); color: var(--burnt-sienna); background: rgba(218,129,100,0.06); }
+.page-btn:disabled { opacity: 0.3; pointer-events: none; }
+.page-arrow { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(157,154,135,0.35); color: var(--khaki); transition: all var(--transition); cursor: pointer; }
+.page-arrow:hover { border-color: var(--burnt-sienna); color: var(--burnt-sienna); }
+.page-arrow:disabled { opacity: 0.3; pointer-events: none; cursor: default; }
+
+/* ─── SINGLE POST VIEW ─── */
+.post-view { max-width: 780px; margin: 0 auto; padding: 0 48px 100px; position: relative; z-index: 2; }
+.post-view-cover {
+  width: 100%; height: 420px; overflow: hidden; margin-bottom: 48px;
+  background: var(--eggshell-dark);
+}
+.post-view-cover img { width: 100%; height: 100%; object-fit: cover; object-position: center center; }
+.post-view-meta { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+.post-view-title {
+  font-family: var(--font-title); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 400;
+  line-height: 1.1; color: var(--jet-black); margin-bottom: 32px;
+}
+.post-view-body { font-size: 0.85rem; line-height: 2; color: var(--jet-black); }
+/* Rich text renderer styles */
+.post-view-body h1 { font-family: var(--font-title); font-size: 2rem; font-weight: 400; margin: 40px 0 16px; color: var(--jet-black); }
+.post-view-body h2 { font-family: var(--font-title); font-size: 1.6rem; font-weight: 400; margin: 36px 0 14px; color: var(--jet-black); }
+.post-view-body h3 { font-family: var(--font-title); font-size: 1.25rem; font-weight: 400; margin: 28px 0 12px; color: var(--jet-black); }
+.post-view-body p { margin-bottom: 20px; }
+.post-view-body ul, .post-view-body ol { padding-left: 24px; margin-bottom: 20px; }
+.post-view-body li { margin-bottom: 8px; }
+.post-view-body strong { font-weight: 600; }
+.post-view-body em { font-style: italic; color: var(--khaki); }
+.post-view-body a { color: var(--burnt-sienna); border-bottom: 1px solid rgba(218,129,100,0.3); transition: border-color var(--transition); }
+.post-view-body a:hover { border-color: var(--burnt-sienna); }
+.post-view-body blockquote {
+  border-left: 3px solid var(--burnt-sienna); padding: 16px 24px;
+  margin: 28px 0; background: rgba(218,129,100,0.05);
+  font-family: var(--font-title); font-size: 1.1rem; font-style: italic; color: var(--khaki);
+}
+.post-view-body img { max-width: 100%; margin: 28px auto; box-shadow: 0 8px 32px rgba(46,45,44,0.1); }
+.post-view-body hr { border: none; border-top: 1px solid rgba(157,154,135,0.25); margin: 36px 0; }
+.post-divider { width: 48px; height: 1px; background: var(--burnt-sienna); margin: 24px 0 32px; }
+
+/* ─── STATE SCREENS ─── */
+.state-screen {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 100px 24px; gap: 20px; text-align: center; min-height: 40vh;
+}
+.state-screen-title { font-family: var(--font-title); font-size: 1.6rem; font-style: italic; color: var(--khaki); }
+.state-screen-sub { font-size: 0.78rem; color: rgba(157,154,135,0.7); max-width: 380px; line-height: 1.9; }
+.skeleton-post { background: white; overflow: hidden; box-shadow: 0 2px 20px rgba(46,45,44,0.05); }
+.skeleton-img-lg { height: 220px; background: linear-gradient(90deg, var(--eggshell-dark) 25%, #f8f6ea 50%, var(--eggshell-dark) 75%); background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; }
+.skeleton-body { padding: 28px; }
+.skeleton-line { height: 10px; background: var(--eggshell-dark); border-radius: 2px; margin-bottom: 10px; animation: shimmer 1.4s ease-in-out infinite; }
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--jet-black); padding: 56px 0 28px;
+  border-top: 1px solid rgba(157,154,135,0.1); position: relative; z-index: 2;
+}
+.footer-inner { max-width: 1200px; margin: auto; padding: 0 48px; }
+.footer-top { display: flex; flex-direction: column; align-items: center; text-align: center; padding-bottom: 36px; border-bottom: 1px solid rgba(157,154,135,0.1); margin-bottom: 28px; gap: 12px; }
+.footer-logo-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px; }
+.footer-brand-name { font-family: var(--font-title); font-size: 1.3rem; color: rgba(243,240,223,0.55); font-weight: 300; letter-spacing: 0.06em; }
+.footer-tagline { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(157,154,135,0.4); }
+.footer-bottom { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+.footer-copy { font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(157,154,135,0.3); }
+.footer-credit { font-size: 0.6rem; letter-spacing: 0.1em; color: rgba(157,154,135,0.25); }
+.footer-credit a { color: rgba(218,129,100,0.4); transition: color var(--transition); }
+.footer-credit a:hover { color: var(--burnt-sienna); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  header { padding: 16px 24px; }
+  header.scrolled { padding: 12px 24px; }
+  nav { display: none; }
+  .hamburger { display: flex; }
+  .posts-section { padding: 0 24px 80px; }
+  .post-view { padding: 0 24px 80px; }
+  .journal-hero { padding: 130px 24px 60px; }
+  .footer-inner { padding: 0 24px; }
+  .posts-grid { grid-template-columns: 1fr; }
+  .post-view-cover { height: 260px; }
+}
+@media (max-width: 600px) {
+  .footer-top { flex-direction: column; }
+  .journal-title { font-size: 2.4rem; }
+  .post-view-title { font-size: 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="nav-drawer" id="navDrawer">
+  <button class="close-drawer" onclick="closeDrawer()"><i data-lucide="x" style="width:20px;height:20px;"></i></button>
+  <a href="index.html">Home</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#catalogue">Catalogue</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="blog.html">Journal</a>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <a class="header-logo" href="index.html">
+    <img src="img/logo.svg" alt="Terra">
+    <div class="header-logo-text">
+      <span class="brand">by Shavindi</span>
+    </div>
+  </a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#catalogue">Catalogue</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="blog.html" class="active">Journal</a>
+  </nav>
+  <button class="hamburger" id="hamburger" onclick="openDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- JOURNAL HERO (listing view) -->
+<div id="journalHero" class="journal-hero">
+  <div class="journal-hero-bg"></div>
+  <p class="journal-eyebrow">From the kiln</p>
+  <h1 class="journal-title">The Terra <em>Journal</em></h1>
+  <p class="journal-subtitle">Stories from the earth — care guides, behind the scenes, and ideas for living well with terracotta.</p>
+</div>
+
+<!-- MAIN CONTENT AREA -->
+<main id="mainContent">
+
+  <!-- LISTING VIEW -->
+  <div id="listingView" class="posts-section">
+    <div class="posts-grid" id="postsGrid">
+      <!-- Skeletons -->
+      <div class="skeleton-post"><div class="skeleton-img-lg"></div><div class="skeleton-body"><div class="skeleton-line" style="width:35%;"></div><div class="skeleton-line"></div><div class="skeleton-line" style="width:80%;"></div></div></div>
+      <div class="skeleton-post"><div class="skeleton-img-lg"></div><div class="skeleton-body"><div class="skeleton-line" style="width:35%;"></div><div class="skeleton-line"></div><div class="skeleton-line" style="width:80%;"></div></div></div>
+      <div class="skeleton-post"><div class="skeleton-img-lg"></div><div class="skeleton-body"><div class="skeleton-line" style="width:35%;"></div><div class="skeleton-line"></div><div class="skeleton-line" style="width:80%;"></div></div></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <!-- SINGLE POST VIEW -->
+  <div id="postView" class="post-view" style="display:none;">
+    <a class="back-btn" onclick="showListing()" href="#">
+      <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+      Back to Journal
+    </a>
+    <div id="postViewInner"></div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo-row">
+        <img src="img/logo.svg" alt="Terra" style="height:36px;width:auto;">
+        <span class="footer-brand-name">Terra by Shavindi</span>
+      </div>
+      <p class="footer-tagline">From Earth To You · Waikkal, Sri Lanka</p>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="footerYear"></span> Terra by Shavindi. All rights reserved.</p>
+      <p class="footer-credit">Web Design by <a href="https://aanjelos.github.io/" target="_blank" rel="noopener">Aanjelo S.</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════
+   CONTENTFUL CONFIG
+═══════════════════════════════════════ */
+const CF_SPACE  = 'z32atf8l71ui';
+const CF_TOKEN  = 'txrrnyjFpY5IgyUgV4k4GQT1r-9Zwscw5cpy148lZv0';
+const CF_BASE   = `https://cdn.contentful.com/spaces/${CF_SPACE}`;
+const POSTS_PER_PAGE = 6;
+
+/* ═══════════════════════════════════════
+   STATE
+═══════════════════════════════════════ */
+let allPosts   = [];
+let assets     = {};  // id → url map for images
+let currentPage = 1;
+let currentSlug = null;
+
+/* ═══════════════════════════════════════
+   INIT
+═══════════════════════════════════════ */
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+window.addEventListener('load', () => {
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+  // Scroll-shrink header
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 40);
+  });
+  // Check URL for ?post=slug
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('post');
+  if(slug){ currentSlug = slug; fetchAndShowPost(slug); }
+  else { fetchPosts(); }
+});
+
+/* ═══════════════════════════════════════
+   NAV DRAWER
+═══════════════════════════════════════ */
+function openDrawer(){ document.getElementById('navDrawer').classList.add('open'); document.getElementById('drawerOverlay').classList.add('open'); }
+function closeDrawer(){ document.getElementById('navDrawer').classList.remove('open'); document.getElementById('drawerOverlay').classList.remove('open'); }
+
+/* ═══════════════════════════════════════
+   FETCH ALL POSTS (listing)
+═══════════════════════════════════════ */
+async function fetchPosts(){
+  try {
+    const url = `${CF_BASE}/entries?content_type=blogPost&order=-fields.date&limit=200&include=1&access_token=${CF_TOKEN}`;
+    const resp = await fetch(url);
+    if(!resp.ok) throw new Error('Contentful fetch failed');
+    const data = await resp.json();
+
+    // Build asset map
+    if(data.includes && data.includes.Asset){
+      data.includes.Asset.forEach(a => {
+        if(a.fields && a.fields.file) assets[a.sys.id] = 'https:' + a.fields.file.url;
+      });
+    }
+
+    allPosts = (data.items || []).map(item => {
+      const f = item.fields;
+      const imgId = f.coverImage && f.coverImage.sys && f.coverImage.sys.id;
+      return {
+        id:       item.sys.id,
+        slug:     f.slug || item.sys.id,
+        title:    f.title || 'Untitled',
+        date:     f.date || null,
+        excerpt:  f.excerpt || '',
+        category: f.category || '',
+        coverUrl: imgId ? assets[imgId] : null,
+        body:     f.body || null,
+      };
+    });
+
+    renderListing();
+  } catch(e) {
+    document.getElementById('postsGrid').innerHTML = `
+      <div class="state-screen" style="grid-column:1/-1;">
+        <i data-lucide="wifi-off" style="width:48px;height:48px;color:rgba(157,154,135,0.3);"></i>
+        <p class="state-screen-title">Couldn't load posts</p>
+        <p class="state-screen-sub">Please check your connection and try again shortly.</p>
+      </div>`;
+    document.getElementById('pagination').innerHTML = '';
+    if(typeof lucide !== 'undefined') lucide.createIcons();
+  }
+}
+
+/* ═══════════════════════════════════════
+   RENDER LISTING WITH PAGINATION
+═══════════════════════════════════════ */
+function renderListing(){
+  if(!allPosts.length){
+    document.getElementById('postsGrid').innerHTML = `
+      <div class="state-screen" style="grid-column:1/-1;">
+        <p class="state-screen-title">No posts yet</p>
+        <p class="state-screen-sub">We're still firing up the kiln. Check back soon.</p>
+      </div>`;
+    document.getElementById('pagination').innerHTML = '';
+    if(typeof lucide !== 'undefined') lucide.createIcons();
+    return;
+  }
+
+  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  currentPage = Math.max(1, Math.min(currentPage, totalPages));
+  const start  = (currentPage - 1) * POSTS_PER_PAGE;
+  const pagePosts = allPosts.slice(start, start + POSTS_PER_PAGE);
+
+  document.getElementById('postsGrid').innerHTML = pagePosts.map(p => `
+    <article class="post-card" onclick="showPost('${p.slug}')">
+      <div class="post-card-img">
+        ${p.coverUrl
+          ? `<img src="${p.coverUrl}?w=680&h=440&fit=fill&f=face" alt="${p.title}" loading="lazy">`
+          : `<div class="post-card-no-img"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="opacity:0.2;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`}
+      </div>
+      <div class="post-card-body">
+        <div class="post-meta">
+          ${p.date ? `<span class="post-date">${formatDate(p.date)}</span>` : ''}
+          ${p.category ? `<span class="post-category">${p.category}</span>` : ''}
+        </div>
+        <h2 class="post-title">${p.title}</h2>
+        ${p.excerpt ? `<p class="post-excerpt">${p.excerpt}</p>` : ''}
+        <span class="post-read-more">Read more <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </article>
+  `).join('');
+
+  // Pagination
+  const pag = document.getElementById('pagination');
+  if(totalPages <= 1){ pag.innerHTML = ''; return; }
+
+  let html = `<button class="page-arrow" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}><i data-lucide="chevron-left" style="width:16px;height:16px;"></i></button>`;
+  for(let i=1; i<=totalPages; i++){
+    html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+  }
+  html += `<button class="page-arrow" onclick="goPage(${currentPage+1})" ${currentPage===totalPages?'disabled':''}><i data-lucide="chevron-right" style="width:16px;height:16px;"></i></button>`;
+  pag.innerHTML = html;
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+function goPage(n){
+  currentPage = n;
+  renderListing();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+/* ═══════════════════════════════════════
+   SHOW SINGLE POST
+═══════════════════════════════════════ */
+function showPost(slug){
+  // Update URL without reload
+  history.pushState({}, '', `blog.html?post=${slug}`);
+  fetchAndShowPost(slug);
+}
+
+async function fetchAndShowPost(slug){
+  // Switch UI to post view
+  document.getElementById('listingView').style.display = 'none';
+  document.getElementById('journalHero').style.display = 'none';
+  document.getElementById('postView').style.display = 'block';
+  document.getElementById('postViewInner').innerHTML = `
+    <div class="state-screen"><div class="skeleton-line" style="width:60%;height:14px;margin:0 auto 12px;"></div><div class="skeleton-line" style="width:40%;height:10px;margin:0 auto;"></div></div>`;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+
+  try {
+    // Try from already-fetched posts first
+    let post = allPosts.find(p => p.slug === slug);
+
+    if(!post){
+      // Fetch individually
+      const url = `${CF_BASE}/entries?content_type=blogPost&fields.slug=${encodeURIComponent(slug)}&include=1&access_token=${CF_TOKEN}`;
+      const resp = await fetch(url);
+      if(!resp.ok) throw new Error('Post not found');
+      const data = await resp.json();
+      if(data.includes && data.includes.Asset){
+        data.includes.Asset.forEach(a => { if(a.fields && a.fields.file) assets[a.sys.id] = 'https:' + a.fields.file.url; });
+      }
+      if(!data.items || !data.items.length) throw new Error('Post not found');
+      const item = data.items[0];
+      const f = item.fields;
+      const imgId = f.coverImage && f.coverImage.sys && f.coverImage.sys.id;
+      post = { id: item.sys.id, slug: f.slug, title: f.title, date: f.date, excerpt: f.excerpt, category: f.category, coverUrl: imgId ? assets[imgId] : null, body: f.body };
+    }
+
+    renderPost(post);
+  } catch(e){
+    document.getElementById('postViewInner').innerHTML = `
+      <div class="state-screen">
+        <p class="state-screen-title">Post not found</p>
+        <p class="state-screen-sub">This post may have been removed or the link is incorrect.</p>
+      </div>`;
+  }
+}
+
+function renderPost(post){
+  // Update page title for SEO
+  document.title = `${post.title} — Terra by Shavindi`;
+
+  const coverHtml = post.coverUrl
+    ? `<div class="post-view-cover"><img src="${post.coverUrl}?w=1400&h=840&fit=fill" alt="${post.title}"></div>`
+    : '';
+
+  document.getElementById('postViewInner').innerHTML = `
+    ${coverHtml}
+    <div class="post-view-meta">
+      ${post.date ? `<span class="post-date">${formatDate(post.date)}</span>` : ''}
+      ${post.category ? `<span class="post-category">${post.category}</span>` : ''}
+    </div>
+    <h1 class="post-view-title">${post.title}</h1>
+    <div class="post-divider"></div>
+    <div class="post-view-body" id="postBody"></div>
+  `;
+
+  // Render rich text body
+  if(post.body) {
+    document.getElementById('postBody').innerHTML = renderRichText(post.body);
+  } else {
+    document.getElementById('postBody').innerHTML = '<p style="color:var(--khaki);font-style:italic;">No content yet.</p>';
+  }
+}
+
+function showListing(){
+  history.pushState({}, '', 'blog.html');
+  document.getElementById('listingView').style.display = 'block';
+  document.getElementById('journalHero').style.display = 'block';
+  document.getElementById('postView').style.display = 'none';
+  document.title = 'Journal — Terra by Shavindi';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  if(!allPosts.length) fetchPosts();
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+}
+
+// Handle browser back button
+window.addEventListener('popstate', () => {
+  const params = new URLSearchParams(window.location.search);
+  const slug = params.get('post');
+  if(slug){ fetchAndShowPost(slug); }
+  else { showListing(); }
+});
+
+/* ═══════════════════════════════════════
+   RICH TEXT RENDERER
+   Converts Contentful's rich text JSON to HTML
+═══════════════════════════════════════ */
+function renderRichText(node){
+  if(!node || !node.content) return '';
+  return node.content.map(n => renderNode(n)).join('');
+}
+
+function renderNode(node){
+  if(node.nodeType === 'text'){
+    let text = escHtml(node.value);
+    if(node.marks) node.marks.forEach(m => {
+      if(m.type === 'bold')      text = `<strong>${text}</strong>`;
+      if(m.type === 'italic')    text = `<em>${text}</em>`;
+      if(m.type === 'underline') text = `<u>${text}</u>`;
+      if(m.type === 'code')      text = `<code>${text}</code>`;
+    });
+    return text;
+  }
+  const inner = node.content ? node.content.map(renderNode).join('') : '';
+  switch(node.nodeType){
+    case 'paragraph':             return inner.trim() ? `<p>${inner}</p>` : '';
+    case 'heading-1':             return `<h1>${inner}</h1>`;
+    case 'heading-2':             return `<h2>${inner}</h2>`;
+    case 'heading-3':             return `<h3>${inner}</h3>`;
+    case 'heading-4':             return `<h3>${inner}</h3>`;
+    case 'unordered-list':        return `<ul>${inner}</ul>`;
+    case 'ordered-list':          return `<ol>${inner}</ol>`;
+    case 'list-item':             return `<li>${inner}</li>`;
+    case 'blockquote':            return `<blockquote>${inner}</blockquote>`;
+    case 'hr':                    return `<hr>`;
+    case 'hyperlink': {
+      const uri = node.data && node.data.uri ? node.data.uri : '#';
+      return `<a href="${uri}" target="_blank" rel="noopener">${inner}</a>`;
+    }
+    case 'embedded-asset-block': {
+      const id = node.data && node.data.target && node.data.target.sys && node.data.target.sys.id;
+      const src = id ? assets[id] : null;
+      return src ? `<img src="${src}?w=1200" alt="">` : '';
+    }
+    default: return inner;
+  }
+}
+
+function escHtml(str){
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ═══════════════════════════════════════
+   HELPERS
+═══════════════════════════════════════ */
+function formatDate(dateStr){
+  if(!dateStr) return '';
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-LK', { day:'numeric', month:'long', year:'numeric' });
+}
+</script>
+</body>
+</html>
