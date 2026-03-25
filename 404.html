@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — Terra by Shavindi</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7N2EXY70B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y7N2EXY70B');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --burnt-sienna: #da8164;
+  --khaki: #9d9a87;
+  --eggshell: #f3f0df;
+  --hunter-green: #2f5b44;
+  --jet-black: #2e2d2c;
+  --eggshell-dark: #e8e4cc;
+  --font-title: 'Instrument Serif', serif;
+  --font-body: 'Josefin Sans', sans-serif;
+  --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--eggshell);
+  color: var(--jet-black);
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+
+/* noise overlay */
+body::before {
+  content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: 0.4;
+}
+
+/* ── HEADER ── */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 48px;
+  background: rgba(243,240,223,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(157,154,135,0.2);
+}
+.header-logo { display: flex; align-items: center; gap: 12px; }
+.header-logo img { height: 44px; width: auto; }
+.header-logo-text .brand {
+  font-family: var(--font-title); font-size: 1.3rem; font-weight: 500;
+  letter-spacing: 0.06em; color: var(--khaki); line-height: 1;
+}
+.header-logo-text .tagline {
+  font-size: 0.52rem; letter-spacing: 0.3em; color: var(--burnt-sienna);
+  text-transform: uppercase; margin-top: 2px;
+}
+.header-home {
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--khaki); transition: color var(--transition);
+  display: flex; align-items: center; gap: 8px;
+}
+.header-home:hover { color: var(--burnt-sienna); }
+
+/* ── MAIN ── */
+main {
+  flex: 1; display: flex; align-items: center; justify-content: center;
+  padding: 120px 48px 80px; position: relative; z-index: 2;
+}
+
+/* background orbs */
+.bg-orb {
+  position: fixed; border-radius: 50%; pointer-events: none;
+}
+.bg-orb-1 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(218,129,100,0.18) 0%, transparent 70%);
+  top: -10%; right: -10%;
+  animation: orbFloat 16s ease-in-out infinite;
+}
+.bg-orb-2 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(47,91,68,0.12) 0%, transparent 70%);
+  bottom: 0%; left: -8%;
+  animation: orbFloat 20s ease-in-out infinite reverse;
+}
+@keyframes orbFloat {
+  0%,100% { transform: translate(0,0) scale(1); }
+  50% { transform: translate(30px,-40px) scale(1.08); }
+}
+
+.content {
+  max-width: 640px; width: 100%; text-align: center;
+}
+
+.error-label {
+  font-size: 0.6rem; letter-spacing: 0.45em; text-transform: uppercase;
+  color: var(--burnt-sienna); margin-bottom: 20px;
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+}
+.error-label::before, .error-label::after {
+  content: ''; width: 28px; height: 1px; background: var(--burnt-sienna);
+}
+
+.error-code {
+  font-family: var(--font-title);
+  font-size: clamp(7rem, 20vw, 13rem);
+  font-weight: 300; line-height: 0.9;
+  color: var(--jet-black); letter-spacing: -0.02em;
+  opacity: 0; animation: fadeUp 0.9s 0.35s forwards;
+}
+.error-code em { font-style: italic; color: var(--khaki); }
+
+.error-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 300; color: var(--jet-black);
+  margin-top: 16px; line-height: 1.2;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+
+.error-desc {
+  margin-top: 20px; font-size: 0.82rem; line-height: 1.9;
+  color: var(--khaki); letter-spacing: 0.03em; max-width: 420px; margin-left: auto; margin-right: auto;
+  opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+}
+
+.divider {
+  width: 40px; height: 1px; background: rgba(157,154,135,0.4);
+  margin: 32px auto;
+  opacity: 0; animation: fadeUp 0.6s 0.75s forwards;
+}
+
+.error-actions {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 0.85s forwards;
+}
+
+.btn-primary {
+  padding: 14px 36px; background: var(--jet-black); color: var(--eggshell);
+  font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+  transition: all var(--transition); position: relative; overflow: hidden;
+  display: inline-block;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0; background: var(--burnt-sienna);
+  transform: translateX(-101%); transition: transform var(--transition);
+}
+.btn-primary:hover::before { transform: translateX(0); }
+.btn-primary span { position: relative; z-index: 1; }
+
+/* terracotta pot illustration */
+.pot-illustration {
+  margin: 0 auto 16px;
+  opacity: 0; animation: fadeIn 1s 0.3s forwards;
+  width: 100px; height: 100px;
+}
+
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { to { opacity: 1; } }
+.error-label, .error-code, .error-title, .error-desc, .divider, .error-actions {
+  transform: translateY(24px);
+}
+.pot-illustration { transform: none; }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 2;
+  padding: 20px 48px;
+  border-top: 1px solid rgba(157,154,135,0.15);
+  display: flex; justify-content: center;
+}
+.footer-copy {
+  font-size: 0.58rem; letter-spacing: 0.12em;
+  color: rgba(157,154,135,0.4); text-align: center;
+}
+
+@media (max-width: 600px) {
+  header { padding: 14px 20px; }
+  main { padding: 100px 24px 60px; }
+  .error-actions { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-outline { width: 100%; max-width: 280px; text-align: center; }
+  footer { padding: 20px 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orb bg-orb-1"></div>
+<div class="bg-orb bg-orb-2"></div>
+
+<header>
+  <a href="index.html" class="header-logo">
+    <img src="img/logo.svg" alt="Terra by Shavindi">
+    <div class="header-logo-text">
+      <span class="brand">by Shavindi</span>
+    </div>
+  </a>
+  <a href="index.html" class="header-home">← Back to site</a>
+</header>
+
+<main>
+  <div class="content">
+
+    <!-- terracotta pot illustration -->
+    <div class="pot-illustration">
+      <svg viewBox="0 0 72 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- lip/rim at top - flat wide disc -->
+        <ellipse cx="36" cy="16" rx="14" ry="3.5" fill="rgba(218,129,100,0.4)" stroke="#da8164" stroke-width="1.2"/>
+        <!-- rim sides -->
+        <path d="M22 16 L24 22 M50 16 L48 22" stroke="#da8164" stroke-width="1.2"/>
+        <!-- neck - narrows below rim -->
+        <path d="M24 22 L26 28 M48 22 L46 28" stroke="#da8164" stroke-width="1.2"/>
+        <!-- body - wide round belly -->
+        <path d="M26 28 C18 30 12 38 12 48 C12 58 22 66 36 66 C50 66 60 58 60 48 C60 38 54 30 46 28 Z" fill="rgba(218,129,100,0.22)" stroke="#da8164" stroke-width="1.2"/>
+        <!-- opening at top -->
+        <ellipse cx="36" cy="28" rx="10" ry="3" fill="rgba(46,45,44,0.08)" stroke="#da8164" stroke-width="1"/>
+        <!-- decorative horizontal band -->
+        <path d="M14 46 C14 46 22 50 36 50 C50 50 58 46 58 46" stroke="rgba(218,129,100,0.55)" stroke-width="1" fill="none"/>
+        <!-- flat base -->
+        <ellipse cx="36" cy="66" rx="11" ry="2.5" fill="rgba(218,129,100,0.3)" stroke="#da8164" stroke-width="1"/>
+        <!-- ground shadow -->
+        <ellipse cx="36" cy="70" rx="15" ry="2.5" fill="rgba(157,154,135,0.12)"/>
+      </svg>
+    </div>
+
+    <p class="error-label">Terra by Shavindi</p>
+    <h1 class="error-code">4<em>0</em>4</h1>
+    <h2 class="error-title">This page got lost in the kiln.</h2>
+    <p class="error-desc">The page you're looking for has either moved, been removed, or never existed. Let's get you back on solid ground.</p>
+
+    <div class="divider"></div>
+
+    <div class="error-actions">
+      <a href="index.html" class="btn-primary"><span>Back to Home</span></a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p class="footer-copy">&copy; <span id="yr"></span> Terra by Shavindi. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
