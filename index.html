@@ -656,8 +656,8 @@ section { position: relative; z-index: 2; }
 }
 .modal-close:hover { background: var(--jet-black); color: white; }
 .modal-grid { display: grid; grid-template-columns: 1fr 1fr; }
-.modal-gallery { position: relative; background: var(--eggshell-dark); min-height: 400px; }
-.modal-gallery .main-img { width: 100%; height: 380px; object-fit: cover; }
+.modal-gallery { position: relative; background: var(--eggshell-dark); aspect-ratio: 3/4; }
+.modal-gallery .main-img { width: 100%; height: 100%; object-fit: cover; }
 .modal-thumbs { display: flex; gap: 8px; padding: 8px; }
 .modal-thumb { width: 64px; height: 64px; object-fit: cover; cursor: pointer; opacity: 0.5; transition: opacity var(--transition); border: 2px solid transparent; }
 .modal-thumb.active { opacity: 1; border-color: var(--burnt-sienna); }
@@ -914,7 +914,6 @@ footer {
   .category-split { grid-template-columns: 1fr; }
   .cat-panel { height: 340px; }
   .modal-grid { grid-template-columns: 1fr; }
-  .modal-gallery .main-img { height: 260px; }
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .process-grid { grid-template-columns: repeat(2,1fr); }
   .process-connector { display: none; }
