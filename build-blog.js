@@ -30,10 +30,14 @@ async function buildBlog() {
       const f = item.fields;
       const imgId = f.coverImage && f.coverImage.sys && f.coverImage.sys.id;
       return {
+        id: item.sys.id,
         slug: f.slug || item.sys.id,
         title: f.title || 'Untitled',
+        date: f.date || null,
         excerpt: f.excerpt || 'Read this post on Terra by Shavindi.',
-        coverUrl: imgId ? assets[imgId] : 'https://shavindi.lk/img/og-image.jpg'
+        category: f.category || '',
+        coverUrl: imgId ? assets[imgId] : 'https://shavindi.lk/img/og-image.jpg',
+        body: f.body || null
       };
     });
 
