@@ -43,11 +43,12 @@ async function buildBlog() {
     const templatePath = path.join(__dirname, 'blog.html');
     const templateHtml = fs.readFileSync(templatePath, 'utf8');
 
-    // Ensure the blog directory exists
+    // Clean up old blog directory to remove deleted posts
     const blogDir = path.join(__dirname, 'blog');
-    if (!fs.existsSync(blogDir)) {
-      fs.mkdirSync(blogDir, { recursive: true });
+    if (fs.existsSync(blogDir)) {
+      fs.rmSync(blogDir, { recursive: true, force: true });
     }
+    fs.mkdirSync(blogDir, { recursive: true });
 
     let generatedCount = 0;
 
