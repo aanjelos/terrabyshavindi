@@ -1664,6 +1664,7 @@ function changeQty(d){
    CART
 ═══════════════════════════════════════ */
 let cart = [];
+try { cart = JSON.parse(localStorage.getItem('terra_cart')) || []; } catch(e){}
 
 function addToCart(){
   if(!currentProduct) return;
@@ -1699,6 +1700,7 @@ function quickAdd(sku){
 }
 
 function updateCartUI(){
+  localStorage.setItem('terra_cart', JSON.stringify(cart));
   updateCartBadge();
   const list = document.getElementById('cartItemsList');
   const footer = document.getElementById('cartFooter');
@@ -1844,6 +1846,7 @@ async function loadBlogPreview(){
 ═══════════════════════════════════════ */
 loadProducts();
 loadBlogPreview();
+updateCartBadge(); // Init cart badge from localStorage
 // ESC clears search
 document.addEventListener('keydown', e => {
   if(e.key === 'Escape'){
