@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<base href="/">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title id="pageTitle">Journal — Terra by Shavindi</title>
@@ -339,7 +340,7 @@ footer {
 
   <!-- SINGLE POST VIEW -->
   <div id="postView" class="post-view" style="display:none;">
-    <a class="back-btn" onclick="showListing()" href="#">
+    <a class="back-btn" onclick="event.preventDefault(); showListing()" href="#">
       <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
       Back to Journal
     </a>

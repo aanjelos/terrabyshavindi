@@ -64,10 +64,10 @@ async function buildBlog() {
 
       let html = templateHtml;
 
-      // 1. Inject base tag and preloaded slug
+      // 1. Inject preloaded slug
       html = html.replace(
         '<head>', 
-        `<head>\n<base href="/">\n<script>window.PRELOADED_SLUG = "${post.slug}";</script>`
+        `<head>\n<script>window.PRELOADED_SLUG = "${post.slug}";</script>`
       );
 
       // 2. Replace Meta Tags
