@@ -91,16 +91,21 @@ async function buildBlog() {
         `<meta property="og:description" id="ogDesc" content="${escapeHtml(post.excerpt)}">`
       );
 
+      // Format OG Image for social sharing (WhatsApp/Facebook require < 300KB and standard formats)
+      const ogImageUrl = post.coverUrl.includes('ctfassets.net')
+        ? `${post.coverUrl}?w=1200&h=630&fit=fill&f=face&fm=jpg&q=80`
+        : post.coverUrl;
+
       // OG Image
       html = html.replace(
         /<meta property="og:image" content=".*?">/s,
-        `<meta property="og:image" content="${post.coverUrl}">`
+        `<meta property="og:image" content="${ogImageUrl}">`
       );
 
       // Twitter Image (just in case)
       html = html.replace(
         /<meta name="twitter:image" content=".*?">/s,
-        `<meta name="twitter:image" content="${post.coverUrl}">`
+        `<meta name="twitter:image" content="${ogImageUrl}">`
       );
 
       // Canonical URL
