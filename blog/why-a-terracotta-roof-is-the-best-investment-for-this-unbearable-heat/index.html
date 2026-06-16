@@ -367,13 +367,11 @@ footer {
   </div>
 </footer>
 
+<script src="blog-data.js"></script>
 <script>
 /* ═══════════════════════════════════════
-   CONTENTFUL CONFIG
+   CONFIG
 ═══════════════════════════════════════ */
-const CF_SPACE  = 'z32atf8l71ui';
-const CF_TOKEN  = 'txrrnyjFpY5IgyUgV4k4GQT1r-9Zwscw5cpy148lZv0';
-const CF_BASE   = `https://cdn.contentful.com/spaces/${CF_SPACE}`;
 const POSTS_PER_PAGE = 6;
 
 /* ═══════════════════════════════════════
@@ -424,33 +422,7 @@ function closeDrawer(){ document.getElementById('navDrawer').classList.remove('o
 ═══════════════════════════════════════ */
 async function fetchPosts(){
   try {
-    const url = `${CF_BASE}/entries?content_type=blogPost&order=-fields.date&limit=200&include=1&access_token=${CF_TOKEN}`;
-    const resp = await fetch(url);
-    if(!resp.ok) throw new Error('Contentful fetch failed');
-    const data = await resp.json();
-
-    // Build asset map
-    if(data.includes && data.includes.Asset){
-      data.includes.Asset.forEach(a => {
-        if(a.fields && a.fields.file) assets[a.sys.id] = 'https:' + a.fields.file.url;
-      });
-    }
-
-    allPosts = (data.items || []).map(item => {
-      const f = item.fields;
-      const imgId = f.coverImage && f.coverImage.sys && f.coverImage.sys.id;
-      return {
-        id:       item.sys.id,
-        slug:     f.slug || item.sys.id,
-        title:    f.title || 'Untitled',
-        date:     f.date || null,
-        excerpt:  f.excerpt || '',
-        category: f.category || '',
-        coverUrl: imgId ? assets[imgId] : null,
-        body:     f.body || null,
-      };
-    });
-
+    allPosts = window.BLOG_DATA || [];
     renderListing();
   } catch(e) {
     document.getElementById('postsGrid').innerHTML = `
@@ -547,23 +519,11 @@ async function fetchAndShowPost(slug){
   if(typeof lucide !== 'undefined') lucide.createIcons();
 
   try {
-    // Try from already-fetched posts first
-    let post = allPosts.find(p => p.slug === slug);
+    const postData = window.BLOG_DATA || [];
+    let post = postData.find(p => p.slug === slug);
 
     if(!post){
-      // Fetch individually
-      const url = `${CF_BASE}/entries?content_type=blogPost&fields.slug=${encodeURIComponent(slug)}&include=1&access_token=${CF_TOKEN}`;
-      const resp = await fetch(url);
-      if(!resp.ok) throw new Error('Post not found');
-      const data = await resp.json();
-      if(data.includes && data.includes.Asset){
-        data.includes.Asset.forEach(a => { if(a.fields && a.fields.file) assets[a.sys.id] = 'https:' + a.fields.file.url; });
-      }
-      if(!data.items || !data.items.length) throw new Error('Post not found');
-      const item = data.items[0];
-      const f = item.fields;
-      const imgId = f.coverImage && f.coverImage.sys && f.coverImage.sys.id;
-      post = { id: item.sys.id, slug: f.slug, title: f.title, date: f.date, excerpt: f.excerpt, category: f.category, coverUrl: imgId ? assets[imgId] : null, body: f.body };
+      throw new Error('Post not found');
     }
 
     renderPost(post);
