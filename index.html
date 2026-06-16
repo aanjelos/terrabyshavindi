@@ -1365,6 +1365,7 @@ footer {
   </div>
 </div>
 
+<script src="blog-data.js"></script>
 <script>
 /* ═══════════════════════════════════════
    PRELOADER + WITTY MESSAGES
@@ -1794,26 +1795,10 @@ function copyOrderToClipboard(){
 /* ═══════════════════════════════════════
    BLOG PREVIEW (3 latest posts from Contentful)
 ═══════════════════════════════════════ */
-const CF_SPACE = 'z32atf8l71ui';
-const CF_TOKEN = 'txrrnyjFpY5IgyUgV4k4GQT1r-9Zwscw5cpy148lZv0';
-
 async function loadBlogPreview(){
   const grid = document.getElementById('blogPreviewGrid');
   try {
-    const url = `https://cdn.contentful.com/spaces/${CF_SPACE}/entries?content_type=blogPost&order=-fields.date&limit=3&include=1&access_token=${CF_TOKEN}`;
-    const resp = await fetch(url);
-    if(!resp.ok) throw new Error();
-    const data = await resp.json();
-    const assetMap = {};
-    if(data.includes && data.includes.Asset){
-      data.includes.Asset.forEach(a => { if(a.fields && a.fields.file) assetMap[a.sys.id] = 'https:' + a.fields.file.url; });
-    }
-    const posts = (data.items || []).map(item => {
-      const f = item.fields;
-      const imgId = f.coverImage && f.coverImage.sys && f.coverImage.sys.id;
-      return { slug: f.slug || item.sys.id, title: f.title || 'Untitled', date: f.date || null, excerpt: f.excerpt || '', category: f.category || '', coverUrl: imgId ? assetMap[imgId] : null };
-    });
-
+    const posts = (window.BLOG_DATA || []).slice(0, 3);
     if(!posts.length){
       grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;font-family:var(--font-title);font-style:italic;color:var(--khaki);padding:40px;">No posts yet — check back soon.</p>`;
       return;

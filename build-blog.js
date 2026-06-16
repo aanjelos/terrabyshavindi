@@ -3,7 +3,7 @@ const path = require('path');
 
 // Contentful Config
 const CF_SPACE  = 'z32atf8l71ui';
-const CF_TOKEN  = 'txrrnyjFpY5IgyUgV4k4GQT1r-9Zwscw5cpy148lZv0';
+const CF_TOKEN  = process.env.CF_TOKEN; // Set this in GitHub Secrets or locally
 const CF_BASE   = `https://cdn.contentful.com/spaces/${CF_SPACE}`;
 
 async function buildBlog() {
@@ -121,6 +121,12 @@ async function buildBlog() {
     }
 
     console.log(`Successfully generated ${generatedCount} blog post pages.`);
+
+    // Write blog-data.js for index.html and blog.html
+    const blogDataPath = path.join(__dirname, 'blog-data.js');
+    const blogDataContent = `window.BLOG_DATA = ${JSON.stringify(posts)};`;
+    fs.writeFileSync(blogDataPath, blogDataContent, 'utf8');
+    console.log('Successfully generated blog-data.js');
     
   } catch (err) {
     console.error('Error building blog:', err);
