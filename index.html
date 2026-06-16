@@ -1805,7 +1805,7 @@ async function loadBlogPreview(){
     }
 
     grid.innerHTML = posts.map(p => `
-      <a class="blog-preview-card" href="blog.html?post=${p.slug}">
+      <a class="blog-preview-card" href="/blog/${p.slug}/">
         <div class="blog-preview-img">
           ${p.coverUrl
             ? `<img src="${p.coverUrl}?w=680&h=400&fit=fill&f=face" alt="${p.title}" loading="lazy">`
