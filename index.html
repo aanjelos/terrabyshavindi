@@ -515,12 +515,25 @@ section { position: relative; z-index: 2; }
   cursor: pointer;
 }
 .product-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(46,45,44,0.14); }
+@keyframes imgSkeletonPulse {
+  0% { background-color: var(--eggshell-dark); }
+  50% { background-color: rgba(157,154,135,0.25); }
+  100% { background-color: var(--eggshell-dark); }
+}
 .product-card-img {
   position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--eggshell-dark);
+  animation: imgSkeletonPulse 1.5s ease-in-out infinite;
+}
+.product-card-img.loaded {
+  animation: none;
 }
 .product-card-img img {
   width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.product-card-img.loaded img {
+  opacity: 1;
 }
 .product-card:hover .product-card-img img { transform: scale(1.07); }
 .product-badge {
@@ -1529,11 +1542,11 @@ function renderGrid(){
   }
   grid.innerHTML = prods.map(p=>{
     const imgHtml = p.images.length
-      ? `<img src="${p.images[0]}" alt="${p.name}" loading="lazy">`
+      ? `<img src="${p.images[0]}" alt="${p.name}" loading="lazy" onload="this.parentElement.classList.add('loaded')">`
       : `<div class="no-img-placeholder"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>No Image</span></div>`;
     return `
     <div class="product-card" onclick="openProduct('${p.sku}')">
-      <div class="product-card-img">
+      <div class="product-card-img ${!p.images.length ? 'loaded' : ''}">
         ${imgHtml}
         <span class="product-badge ${p.category==='homeware'?'homeware':''}">${p.category==='homeware'?'Homeware':'Building'}</span>
         <div class="product-card-overlay">
