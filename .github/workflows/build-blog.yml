@@ -1,0 +1,35 @@
+name: Build Blog Static Pages
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  repository_dispatch:
+    types: [contentful-publish]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run build-blog.js
+        run: node build-blog.js
+
+      - name: Commit generated files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: Auto-generate static blog pages [skip ci]"
+          file_pattern: "blog/**/*.html"
