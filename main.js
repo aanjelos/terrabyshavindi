@@ -726,7 +726,7 @@ function formatDate(dateStr){
 
 /* --- INIT --- */
 document.addEventListener('DOMContentLoaded', () => {
-  if (document.getElementById('productsGrid')) {
+  if (document.getElementById('productGrid')) {
     if (typeof loadProducts === 'function') loadProducts();
   }
   if (document.getElementById('blogPreviewGrid')) {
