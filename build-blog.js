@@ -128,7 +128,12 @@ async function buildBlog() {
 
     // Write blog-data.js for index.html and blog.html
     const blogDataPath = path.join(__dirname, 'blog-data.js');
-    const blogDataContent = `window.BLOG_DATA = ${JSON.stringify(posts)};`;
+    const safePostsForIndex = posts.map(p => {
+      const { body, ...rest } = p;
+      return rest;
+    });
+    const safeJson = JSON.stringify(safePostsForIndex).replace(/</g, '\\u003c');
+    const blogDataContent = `window.BLOG_DATA = ${safeJson};`;
     fs.writeFileSync(blogDataPath, blogDataContent, 'utf8');
     console.log('Successfully generated blog-data.js');
     
