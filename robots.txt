@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shavindi.lk/sitemap.xml

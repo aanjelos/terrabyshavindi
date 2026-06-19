@@ -132,6 +132,32 @@ async function buildBlog() {
     fs.writeFileSync(blogDataPath, blogDataContent, 'utf8');
     console.log('Successfully generated blog-data.js');
     
+    // Write sitemap.xml
+    const sitemapPath = path.join(__dirname, 'sitemap.xml');
+    const today = new Date().toISOString().split('T')[0];
+    let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+    sitemapXml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+    
+    // Add static pages
+    const staticPages = [
+      { url: 'https://shavindi.lk/', priority: '1.0' },
+      { url: 'https://shavindi.lk/blog.html', priority: '0.9' }
+    ];
+    
+    staticPages.forEach(page => {
+      sitemapXml += `  <url>\n    <loc>${page.url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${page.priority}</priority>\n  </url>\n`;
+    });
+
+    // Add blog posts
+    posts.forEach(post => {
+      const lastMod = post.date ? new Date(post.date).toISOString().split('T')[0] : today;
+      sitemapXml += `  <url>\n    <loc>https://shavindi.lk/blog/${post.slug}/</loc>\n    <lastmod>${lastMod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n`;
+    });
+
+    sitemapXml += `</urlset>`;
+    fs.writeFileSync(sitemapPath, sitemapXml, 'utf8');
+    console.log('Successfully generated sitemap.xml');
+    
   } catch (err) {
     console.error('Error building blog:', err);
     process.exit(1);
