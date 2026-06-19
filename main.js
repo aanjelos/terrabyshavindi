@@ -18,7 +18,7 @@ const wittyMessages = [
   document.getElementById('footerYear').textContent = new Date().getFullYear();
 })();
 window.addEventListener('load', () => {
-  setTimeout(() => { document.getElementById('preloader').classList.add('done'); }, 1400);
+  setTimeout(() => { const p = document.getElementById('preloader'); if(p) p.classList.add('done'); }, 1400);
   if(typeof lucide !== 'undefined') lucide.createIcons();
 });
 
@@ -385,8 +385,10 @@ function updateCartBadge(){
   const count = cart.reduce((s,c)=>s+c.qty,0);
   const badge = document.getElementById('cartBadge');
   const badgeMobile = document.getElementById('cartBadgeMobile');
-  badge.textContent = count;
-  badge.classList.toggle('show', count>0);
+  if(badge){
+    badge.textContent = count;
+    badge.classList.toggle('show', count>0);
+  }
   if(badgeMobile){ badgeMobile.textContent = count; badgeMobile.classList.toggle('show', count>0); }
 }
 function removeFromCart(sku){
