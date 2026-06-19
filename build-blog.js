@@ -128,12 +128,20 @@ async function buildBlog() {
 
     // Write blog-data.js for index.html and blog.html
     const blogDataPath = path.join(__dirname, 'blog-data.js');
-    const safeJson = JSON.stringify(posts).replace(/</g, '\\u003c');
+    const safePostsForIndex = posts.map(p => {
+      const { body, ...rest } = p;
+      return rest;
+    });
+    const safeJson = JSON.stringify(safePostsForIndex).replace(/</g, '\\u003c');
     const blogDataContent = `window.BLOG_DATA = ${safeJson};`;
     fs.writeFileSync(blogDataPath, blogDataContent, 'utf8');
     console.log('Successfully generated blog-data.js');
     
-    // Write sitemap.xml
+    // Write individual data.json for each post for SPA on-demand fetch
+    posts.forEach(p => {
+      const postDataPath = path.join(__dirname, 'blog', p.slug, 'data.json');
+      fs.writeFileSync(postDataPath, JSON.stringify(p).replace(/</g, '\\u003c'), 'utf8');
+    });
     const sitemapPath = path.join(__dirname, 'sitemap.xml');
     const today = new Date().toISOString().split('T')[0];
     let sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n`;

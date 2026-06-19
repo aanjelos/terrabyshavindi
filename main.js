@@ -601,6 +601,13 @@ async function fetchAndShowPost(slug){
       throw new Error('Post not found');
     }
 
+    if(!post.body){
+      const res = await fetch(`/blog/${slug}/data.json`);
+      if(!res.ok) throw new Error('Failed to fetch full post');
+      const data = await res.json();
+      post.body = data.body;
+    }
+
     renderPost(post);
   } catch(e){
     console.error("Failed to fetch/show post:", e);
@@ -615,6 +622,12 @@ async function fetchAndShowPost(slug){
 function renderPost(post){
   // Update page title for SEO
   document.title = `${post.title} — Terra by Shavindi`;
+  const ogTitle = document.getElementById('ogTitle');
+  const ogDesc = document.getElementById('ogDesc');
+  const canonical = document.getElementById('canonical');
+  if(ogTitle) ogTitle.content = `${post.title} — Terra by Shavindi`;
+  if(ogDesc && post.excerpt) ogDesc.content = post.excerpt;
+  if(canonical) canonical.href = `https://shavindi.lk/blog/${post.slug}/`;
 
   const coverHtml = post.coverUrl
     ? `<div class="post-view-cover"><img src="${post.coverUrl}?w=1400&h=840&fit=fill" alt="${post.title}"></div>`
