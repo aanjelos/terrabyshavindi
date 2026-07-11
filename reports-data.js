@@ -14,7 +14,7 @@ window.reportsDataConfig = {
     {
       "monthId": "april-2026",
       "label": "April 2026",
-      "period": "28 March 2026 - 28 April 2026",
+      "period": "28 March, 2026 - 27 April, 2026",
       "overview": {
         "activeUsers": 23,
         "newUsers": 22,
@@ -35,7 +35,7 @@ window.reportsDataConfig = {
     {
       "monthId": "may-2026",
       "label": "May 2026",
-      "period": "28 April 2026 - 27 May 2026",
+      "period": "28 April, 2026 - 27 May, 2026",
       "overview": {
         "activeUsers": 27,
         "newUsers": 24,
@@ -62,7 +62,7 @@ window.reportsDataConfig = {
     {
       "monthId": "june-2026",
       "label": "June 2026",
-      "period": "28 May 2026 - 27 June 2026",
+      "period": "28 May, 2026 - 27 June, 2026",
       "overview": {
         "activeUsers": 18,
         "newUsers": 17,
@@ -89,7 +89,7 @@ window.reportsDataConfig = {
     {
       "monthId": "july-2026",
       "label": "July 2026",
-      "period": "28 June 2026 - 28 July 2026",
+      "period": "28 June, 2026 - 27 July, 2026",
       "overview": null,
       "searchPerformance": null,
       "topQueries": [],
