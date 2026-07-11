@@ -28,6 +28,29 @@ function checkPassword() {
   }
 }
 
+function togglePasswordVisibility() {
+  const input = document.getElementById('gate-password');
+  const btn = document.querySelector('.btn-toggle-password');
+  if (input.type === 'password') {
+    input.type = 'text';
+    btn.innerHTML = '<i data-lucide="eye-off" id="password-eye-icon" style="width:20px;height:20px;"></i>';
+  } else {
+    input.type = 'password';
+    btn.innerHTML = '<i data-lucide="eye" id="password-eye-icon" style="width:20px;height:20px;"></i>';
+  }
+  lucide.createIcons();
+}
+
+function lockReports() {
+  sessionStorage.removeItem('clientAuth');
+  document.getElementById('gate-password').value = '';
+  document.getElementById('gate-password').type = 'password';
+  document.querySelector('.btn-toggle-password').innerHTML = '<i data-lucide="eye" id="password-eye-icon" style="width:20px;height:20px;"></i>';
+  lucide.createIcons();
+  document.getElementById('password-gate').classList.remove('hidden');
+  document.getElementById('gate-error').style.display = 'none';
+}
+
 // Data Fetching and Initialization
 function initReports() {
   try {
