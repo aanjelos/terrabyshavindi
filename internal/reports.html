@@ -60,7 +60,7 @@
     padding: 0;
   }
   .btn-toggle-password:hover { color: var(--burnt-sienna); }
-  .gate-box button {
+  .gate-box .btn-access {
     width: 100%;
     background: var(--burnt-sienna);
     color: white;
@@ -71,7 +71,7 @@
     cursor: pointer;
     transition: background 0.3s;
   }
-  .gate-box button:hover { background: #c26e52; }
+  .gate-box .btn-access:hover { background: #c26e52; }
   #gate-error { color: #d9534f; font-size: 0.85rem; margin-top: -10px; margin-bottom: 10px; display: none; }
 
   /* Dashboard Header */
@@ -112,7 +112,7 @@
     cursor: pointer;
     outline: none;
   }
-  .btn-print, .btn-lock {
+  .btn-print {
     padding: 10px 16px;
     background: var(--jet-black);
     color: white;
@@ -125,8 +125,6 @@
     transition: background 0.3s;
   }
   .btn-print:hover { background: #234734; }
-  .btn-lock { background: var(--burnt-sienna); }
-  .btn-lock:hover { background: #b8674d; }
 
   @media (max-width: 768px) {
     .dashboard-header { flex-direction: column; align-items: flex-start; gap: 20px; }
@@ -290,7 +288,7 @@
       <input type="password" id="gate-password" placeholder="Password" onkeydown="if(event.key === 'Enter') checkPassword()">
       <button class="btn-toggle-password" onclick="togglePasswordVisibility()"><i data-lucide="eye" id="password-eye-icon" style="width:20px;height:20px;"></i></button>
     </div>
-    <button onclick="checkPassword()">Access Reports</button>
+    <button class="btn-access" onclick="checkPassword()">Access Reports</button>
   </div>
 </div>
 
@@ -303,6 +301,7 @@
     </div>
   </div>
   <nav>
+    <a href="#" onclick="lockReports(); return false;"><i data-lucide="lock" style="width:12px;height:12px;margin-right:4px;vertical-align:-1px;display:inline-block;"></i> Lock Portal</a>
     <a href="../index.html">Back to Website</a>
   </nav>
 </header>
@@ -318,7 +317,6 @@
     <div class="dashboard-controls">
       <select id="month-select" onchange="loadReportData()"></select>
       <button class="btn-print" onclick="window.print()"><i data-lucide="printer" style="width:18px;height:18px;"></i> Save as PDF</button>
-      <button class="btn-lock" onclick="lockReports()"><i data-lucide="lock" style="width:18px;height:18px;"></i> Lock</button>
     </div>
   </div>
 
