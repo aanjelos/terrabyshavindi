@@ -629,6 +629,14 @@ function renderPost(post){
   if(ogDesc && post.excerpt) ogDesc.content = post.excerpt;
   if(canonical) canonical.href = `https://shavindi.lk/blog/${post.slug}/`;
 
+  // Track SPA page view in Google Analytics
+  if (typeof gtag !== 'undefined') {
+    gtag('config', 'G-Y7N2EXY70B', {
+      'page_path': `/blog/${post.slug}/`,
+      'page_title': `${post.title} — Terra by Shavindi`
+    });
+  }
+
   const coverHtml = post.coverUrl
     ? `<div class="post-view-cover"><img src="${post.coverUrl}?w=1400&h=840&fit=fill" alt="${post.title}"></div>`
     : '';
