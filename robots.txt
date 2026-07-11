@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /internal/
+Disallow: /reports-data.js
 
 Sitemap: https://shavindi.lk/sitemap.xml
