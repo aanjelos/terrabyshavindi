@@ -44,7 +44,7 @@
     max-width: 400px;
     width: 90%;
   }
-  .gate-box h2 { font-family: var(--font-title); font-size: 2rem; color: var(--jet-black); margin-bottom: 10px; }
+  .gate-box h2 { font-family: var(--font-title); font-size: 2rem; color: var(--jet-black); margin-bottom: 10px; font-weight: normal; }
   .gate-box p { font-size: 0.9rem; color: var(--khaki); margin-bottom: 20px; }
   .gate-box input {
     width: 100%;
@@ -279,7 +279,7 @@
 <!-- PASSWORD GATE -->
 <div id="password-gate">
   <div class="gate-box">
-    <h2>Client Portal</h2>
+    <h2>Reports Portal</h2>
     <p>Please enter the password to view your reports.</p>
     <div id="gate-error">Incorrect password. Please try again.</div>
     <input type="password" id="gate-password" placeholder="Password" onkeydown="if(event.key === 'Enter') checkPassword()">
