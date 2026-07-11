@@ -631,10 +631,14 @@ function renderPost(post){
 
   // Track SPA page view in Google Analytics
   if (typeof gtag !== 'undefined') {
-    gtag('config', 'G-Y7N2EXY70B', {
-      'page_path': `/blog/${post.slug}/`,
-      'page_title': `${post.title} — Terra by Shavindi`
-    });
+    if (window._initialDirectLoad) {
+      window._initialDirectLoad = false;
+    } else {
+      gtag('config', 'G-Y7N2EXY70B', {
+        'page_path': `/blog/${post.slug}/`,
+        'page_title': `${post.title} — Terra by Shavindi`
+      });
+    }
   }
 
   const coverHtml = post.coverUrl
@@ -799,7 +803,11 @@ window.addEventListener('load', () => {
         slug = params.get('post');
       }
     }
-    if(slug){ currentSlug = slug; if(typeof fetchAndShowPost==='function') fetchAndShowPost(slug); }
+    if(slug){ 
+      currentSlug = slug; 
+      window._initialDirectLoad = true;
+      if(typeof fetchAndShowPost==='function') fetchAndShowPost(slug); 
+    }
     else { if(typeof fetchPosts==='function') fetchPosts(); }
   }
 });
