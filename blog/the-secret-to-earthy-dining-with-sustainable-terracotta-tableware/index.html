@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.PRELOADED_SLUG = "the-secret-to-earthy-dining-with-sustainable-terracotta-tableware";</script>
+<base href="/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">The Secret To Earthy Dining With Sustainable Terracotta Tableware — Terra by Shavindi</title>
+<meta name="description" id="pageDesc" content="Transform your everyday meals into a grounding ritual with natural clay tableware. Discover how sustainable terracotta can bring a warm, earthy soul to your dining space.">
+<meta name="author" content="Terra by Shavindi">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#da8164">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Terra by Shavindi">
+<meta property="og:title" id="ogTitle" content="The Secret To Earthy Dining With Sustainable Terracotta Tableware — Terra by Shavindi">
+<meta property="og:description" id="ogDesc" content="Transform your everyday meals into a grounding ritual with natural clay tableware. Discover how sustainable terracotta can bring a warm, earthy soul to your dining space.">
+<meta property="og:image" content="https://images.ctfassets.net/z32atf8l71ui/23H3SwNEq7hhaRvRVxCavX/4323b3b88b4721cab2d41070b3642d03/07_The_Secret_To_Earthy_Dining_With_Sustainable_Terracotta_Tableware.jpg?w=1200&h=630&fit=fill&f=face&fm=jpg&q=80">
+<link rel="canonical" id="canonical" href="https://shavindi.lk/blog/the-secret-to-earthy-dining-with-sustainable-terracotta-tableware/">
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y7N2EXY70B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Y7N2EXY70B');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- NAV DRAWER -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<div class="nav-drawer" id="navDrawer">
+  <button class="close-drawer" onclick="closeDrawer()"><i data-lucide="x" style="width:20px;height:20px;"></i></button>
+  <a href="index.html">Home</a>
+  <a href="index.html#about">About</a>
+  <a href="index.html#catalogue">Catalogue</a>
+  <a href="index.html#contact">Contact</a>
+  <a href="blog.html">Journal</a>
+</div>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <a class="header-logo" href="index.html">
+    <img src="img/logo.svg" alt="Terra">
+    <div class="header-logo-text">
+      <span class="brand">by Shavindi</span>
+    </div>
+  </a>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="index.html#catalogue">Catalogue</a>
+    <a href="index.html#contact">Contact</a>
+    <a href="blog.html" class="active">Journal</a>
+  </nav>
+  <button class="hamburger" id="hamburger" onclick="openDrawer()">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- JOURNAL HERO (listing view) -->
+<div id="journalHero" class="journal-hero">
+  <div class="journal-hero-bg"></div>
+  <p class="journal-eyebrow">From the kiln</p>
+  <h1 class="journal-title">The Terra <em>Journal</em></h1>
+  <p class="journal-subtitle">Stories from the earth — care guides, behind the scenes, and ideas for living well with terracotta.</p>
+</div>
+
+<!-- MAIN CONTENT AREA -->
+<main id="mainContent">
+
+  <!-- LISTING VIEW -->
+  <div id="listingView" class="posts-section">
+    <div class="posts-grid" id="postsGrid">
+      <!-- Skeletons -->
+      <div class="skeleton-post"><div class="skeleton-img-lg"></div><div class="skeleton-body"><div class="skeleton-line" style="width:35%;"></div><div class="skeleton-line"></div><div class="skeleton-line" style="width:80%;"></div></div></div>
+      <div class="skeleton-post"><div class="skeleton-img-lg"></div><div class="skeleton-body"><div class="skeleton-line" style="width:35%;"></div><div class="skeleton-line"></div><div class="skeleton-line" style="width:80%;"></div></div></div>
+      <div class="skeleton-post"><div class="skeleton-img-lg"></div><div class="skeleton-body"><div class="skeleton-line" style="width:35%;"></div><div class="skeleton-line"></div><div class="skeleton-line" style="width:80%;"></div></div></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </div>
+
+  <!-- SINGLE POST VIEW -->
+  <div id="postView" class="post-view" style="display:none;">
+    <a class="back-btn" onclick="event.preventDefault(); showListing()" href="#">
+      <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+      Back to Journal
+    </a>
+    <div id="postViewInner"></div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo-row">
+        <img src="img/logo.svg" alt="Terra" style="height:36px;width:auto;">
+        <span class="footer-brand-name">Terra by Shavindi</span>
+      </div>
+      <p class="footer-tagline">From Earth To You · Waikkal, Sri Lanka</p>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© <span id="footerYear"></span> Terra by Shavindi. All rights reserved.</p>
+      <p class="footer-credit">Web Design by <a href="https://aanjelos.github.io/" target="_blank" rel="noopener">Aanjelo S.</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="blog-data.js"></script>
+<script src="/main.js"></script>
+</html>
