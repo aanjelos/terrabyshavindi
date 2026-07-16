@@ -434,7 +434,7 @@ function copyOrderToClipboard(){
 async function loadBlogPreview(){
   const grid = document.getElementById('blogPreviewGrid');
   try {
-    const posts = (window.BLOG_DATA || []).slice(0, 3);
+    const posts = (window.BLOG_DATA || []).slice(0, 4);
     if(!posts.length){
       grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;font-family:var(--font-title);font-style:italic;color:var(--khaki);padding:40px;">No posts yet — check back soon.</p>`;
       return;

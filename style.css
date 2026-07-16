@@ -792,7 +792,7 @@ footer {
    BLOG PREVIEW (index)
 ───────────────────────────────────────── */
 #blog-preview { padding: 100px 0; background: var(--eggshell-dark); }
-.blog-preview-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 48px; margin-bottom: 48px; }
+.blog-preview-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; margin-top: 48px; margin-bottom: 48px; }
 .blog-preview-card {
   background: white; overflow: hidden; cursor: pointer;
   box-shadow: 0 2px 16px rgba(46,45,44,0.06);
@@ -809,14 +809,14 @@ footer {
 .blog-preview-no-img {
   width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
 }
-.blog-preview-body { padding: 24px 24px 28px; }
+.blog-preview-body { padding: 24px 24px 28px; display: flex; flex-direction: column; flex: 1; }
 .blog-preview-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .blog-preview-date { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--khaki); }
 .blog-preview-cat { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burnt-sienna); padding: 2px 8px; border: 1px solid rgba(218,129,100,0.4); }
 .blog-preview-title { font-family: var(--font-title); font-size: 1.25rem; line-height: 1.25; color: var(--jet-black); margin-bottom: 10px; transition: color var(--transition); }
 .blog-preview-card:hover .blog-preview-title { color: var(--burnt-sienna); }
-.blog-preview-excerpt { font-size: 1.05rem; line-height: 1.8; color: var(--khaki); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
-.blog-preview-cta { display: flex; justify-content: center; }
+.blog-preview-excerpt { font-size: 0.95rem; line-height: 1.6; color: var(--khaki); }
+.blog-preview-cta { display: flex; justify-content: center; margin-top: auto; padding-top: 24px; }
 .blog-preview-btn {
   padding: 14px 40px; border: 1px solid rgba(157,154,135,0.4); color: var(--khaki);
   font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase;
