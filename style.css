@@ -1036,11 +1036,9 @@ nav a:hover::after, nav a.active::after { width: 100%; }
   transition: color var(--transition);
 }
 .post-card:hover .post-title { color: var(--burnt-sienna); }
-.post-excerpt { font-size: 0.75rem; line-height: 1.85; color: var(--khaki); }
+.post-excerpt { font-size: 1.05rem; line-height: 1.85; color: var(--khaki); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .post-read-more {
-  display: inline-flex; align-items: center; gap: 6px; margin-top: 20px;
-  font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
-  color: var(--burnt-sienna);
+  display: inline-flex; align-items: center; gap: 6px; margin-top: 24px; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--burnt-sienna);
 }
 
 /* ─── PAGINATION ─── */
