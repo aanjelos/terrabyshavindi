@@ -813,7 +813,7 @@ footer {
 .blog-preview-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
 .blog-preview-date { font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--khaki); }
 .blog-preview-cat { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--burnt-sienna); padding: 2px 8px; border: 1px solid rgba(218,129,100,0.4); }
-.blog-preview-title { font-family: var(--font-title); font-size: 1.25rem; line-height: 1.25; color: var(--jet-black); margin-bottom: 10px; transition: color var(--transition); }
+.blog-preview-title { font-family: var(--font-title); font-size: 1.45rem; font-weight: 400; line-height: 1.25; color: var(--jet-black); margin-bottom: 12px; transition: color var(--transition); }
 .blog-preview-card:hover .blog-preview-title { color: var(--burnt-sienna); }
 .blog-preview-excerpt { font-size: 0.95rem; line-height: 1.6; color: var(--khaki); }
 .blog-preview-cta { display: flex; justify-content: center; margin-top: auto; padding-top: 24px; }
