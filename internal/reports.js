@@ -78,12 +78,53 @@ function initReports() {
   }
 }
 
+function getCountdownText(targetDateStr) {
+  if (!targetDateStr) return '-';
+  const target = new Date(targetDateStr);
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const targetDay = new Date(target.getFullYear(), target.getMonth(), target.getDate());
+  
+  const diffTime = targetDay - today;
+  const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+  
+  if (diffDays < 0) {
+    return `Overdue by ${Math.abs(diffDays)} Days`;
+  } else if (diffDays === 0) {
+    return "Due Today";
+  } else if (diffDays < 30) {
+    return `Due in ${diffDays} ${diffDays === 1 ? 'Day' : 'Days'}`;
+  } else {
+    let months = (target.getFullYear() - today.getFullYear()) * 12 + (target.getMonth() - today.getMonth());
+    let tempDate = new Date(today.getFullYear(), today.getMonth() + months, today.getDate());
+    if (tempDate > target) {
+      months--;
+      tempDate = new Date(today.getFullYear(), today.getMonth() + months, today.getDate());
+    }
+    const remDays = Math.round((target - tempDate) / (1000 * 60 * 60 * 24));
+    
+    let str = 'Due in ';
+    if (months > 0) {
+      str += `${months} ${months === 1 ? 'month' : 'months'}`;
+    }
+    if (remDays > 0) {
+      if (months > 0) str += ', ';
+      str += `${remDays} ${remDays === 1 ? 'day' : 'days'}`;
+    }
+    return str;
+  }
+}
+
 function renderBilling() {
   document.getElementById('bill-monthly-status').innerText = billingData.monthlyCharge.status;
   document.getElementById('bill-monthly-amount').innerText = billingData.monthlyCharge.amount;
   document.getElementById('bill-monthly-date').innerText = billingData.monthlyCharge.dueDate;
 
-  document.getElementById('bill-annual-status').innerText = billingData.annualRenewal.status;
+  document.getElementById('bill-annual-status').innerText = getCountdownText(billingData.annualRenewal.date);
+  const annualAmountEl = document.getElementById('bill-annual-amount');
+  if (annualAmountEl) {
+    annualAmountEl.innerText = billingData.annualRenewal.amount || "";
+  }
   document.getElementById('bill-annual-date').innerText = `Renews on: ${billingData.annualRenewal.date}`;
 }
 

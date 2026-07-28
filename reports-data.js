@@ -6,7 +6,7 @@ window.reportsDataConfig = {
       "dueDate": "Due 28th of Each Month"
     },
     "annualRenewal": {
-      "status": "Pending",
+      "amount": "Payment pending",
       "date": "September 1, 2026"
     }
   },
