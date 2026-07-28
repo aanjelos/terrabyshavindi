@@ -1,7 +1,6 @@
 window.reportsDataConfig = {
   "billing": {
     "monthlyCharge": {
-      "status": "Due in 17 Days",
       "amount": "Overdue payments: June & July",
       "dueDate": "Due 28th of Each Month"
     },

@@ -115,8 +115,36 @@ function getCountdownText(targetDateStr) {
   }
 }
 
+function getMonthlyCountdownText() {
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  let targetMonth = now.getMonth();
+  let targetYear = now.getFullYear();
+  
+  if (now.getDate() > 28) {
+    targetMonth++;
+    if (targetMonth > 11) {
+      targetMonth = 0;
+      targetYear++;
+    }
+  } else if (now.getDate() === 28) {
+    return "Due Today";
+  }
+  
+  const target = new Date(targetYear, targetMonth, 28);
+  const diffTime = target - today;
+  const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+  
+  if (diffDays === 1) return "Due Tomorrow";
+  return `Due in ${diffDays} Days`;
+}
+
 function renderBilling() {
-  document.getElementById('bill-monthly-status').innerText = billingData.monthlyCharge.status;
+  const monthlyStatus = (billingData.monthlyCharge.useAutoCountdown !== false)
+    ? getMonthlyCountdownText()
+    : billingData.monthlyCharge.status;
+
+  document.getElementById('bill-monthly-status').innerText = monthlyStatus;
   document.getElementById('bill-monthly-amount').innerText = billingData.monthlyCharge.amount;
   document.getElementById('bill-monthly-date').innerText = billingData.monthlyCharge.dueDate;
 
