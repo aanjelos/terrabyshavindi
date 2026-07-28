@@ -354,46 +354,40 @@ function renderDevices() {
   }
   el.parentElement.classList.remove('hide-in-print', 'no-print', 'is-empty');
   
-  const mobile = d.find(x => x.device === 'Mobile')?.percentage || 0;
-  const desktop = d.find(x => x.device === 'Desktop')?.percentage || 0;
+  const deviceColors = {
+    'Mobile': 'var(--hunter-green)',
+    'Desktop': 'var(--burnt-sienna)',
+    'Tablet': 'var(--khaki)'
+  };
+  
+  const fallbackColors = ['var(--hunter-green)', 'var(--burnt-sienna)', 'var(--khaki)', '#5c806b', '#a3715c'];
 
-  if (!el.querySelector('.pie-chart')) {
-    el.innerHTML = `
-      <div class="pie-chart" style="--p1: 0%"></div>
-      <div class="pie-legend">
-        <div class="legend-item"><div class="legend-color" style="background:var(--hunter-green)"></div> Mobile <span id="mobile-pct">0</span>%</div>
-        <div class="legend-item"><div class="legend-color" style="background:var(--burnt-sienna)"></div> Desktop <span id="desktop-pct">0</span>%</div>
+  let cumulative = 0;
+  const gradientStops = [];
+  let legendHTML = '';
+
+  d.forEach((item, index) => {
+    const color = deviceColors[item.device] || fallbackColors[index % fallbackColors.length];
+    const startPct = cumulative;
+    cumulative += item.percentage;
+    const endPct = Math.min(cumulative, 100);
+
+    gradientStops.push(`${color} ${startPct.toFixed(1)}% ${endPct.toFixed(1)}%`);
+
+    legendHTML += `
+      <div class="legend-item">
+        <div class="legend-color" style="background:${color}"></div>
+        ${item.device} ${item.percentage.toFixed(1)}%
       </div>
     `;
-  }
-  
-  const pie = el.querySelector('.pie-chart');
-  const mPct = el.querySelector('#mobile-pct');
-  const dPct = el.querySelector('#desktop-pct');
+  });
 
-  const formatDec = (val) => val.toFixed(1);
+  const gradientCss = `conic-gradient(${gradientStops.join(', ')})`;
 
-  // Animate the text values
-  animateValue(mPct, lastDisplayed.mobilePct, mobile, 1000, formatDec);
-  animateValue(dPct, 100 - lastDisplayed.mobilePct, desktop, 1000, formatDec);
-
-  // Animate the pie chart conic-gradient manually since CSS vars don't always transition cleanly
-  let startTimestamp = null;
-  const startPie = lastDisplayed.mobilePct;
-  const step = (timestamp) => {
-    if (!startTimestamp) startTimestamp = timestamp;
-    const progress = Math.min((timestamp - startTimestamp) / 1000, 1);
-    const ease = 1 - Math.pow(1 - progress, 4); // easeOutQuart
-    const current = startPie + ease * (mobile - startPie);
-    if (pie) pie.style.setProperty('--p1', current + '%');
-    
-    if (progress < 1) {
-      window.requestAnimationFrame(step);
-    } else {
-      if (pie) pie.style.setProperty('--p1', mobile + '%');
-    }
-  };
-  window.requestAnimationFrame(step);
-
-  lastDisplayed.mobilePct = mobile;
+  el.innerHTML = `
+    <div class="pie-chart" style="background: ${gradientCss};"></div>
+    <div class="pie-legend">
+      ${legendHTML}
+    </div>
+  `;
 }

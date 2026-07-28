@@ -49,10 +49,10 @@ window.reportsDataConfig = {
         { "source": "Ecosia", "value": 1 }
       ],
       "topLocations": [
-        { "city": "Colombo", "value": null },
-        { "city": "Negombo", "value": null },
-        { "city": "Singapore", "value": null },
-        { "city": "Ahangama", "value": null }
+        { "city": "Colombo, Sri Lanka", "value": null },
+        { "city": "Negombo, Sri Lanka", "value": null },
+        { "city": "Singapore, Singapore", "value": null },
+        { "city": "Ahangama, Sri Lanka", "value": null }
       ],
       "trafficByDevice": [
         { "device": "Mobile", "percentage": 68.5 },
@@ -76,10 +76,10 @@ window.reportsDataConfig = {
         { "source": "Google", "value": 4 }
       ],
       "topLocations": [
-        { "city": "Colombo", "value": null },
-        { "city": "Boardman", "value": null },
-        { "city": "Doha", "value": null },
-        { "city": "Negombo", "value": null }
+        { "city": "Colombo, Sri Lanka", "value": null },
+        { "city": "Boardman, USA", "value": null },
+        { "city": "Doha, Qatar", "value": null },
+        { "city": "Negombo, Sri Lanka", "value": null }
       ],
       "trafficByDevice": [
         { "device": "Mobile", "percentage": 62.1 },
@@ -119,13 +119,13 @@ window.reportsDataConfig = {
         { "source": "ChatGPT", "value": 6 }
       ],
       "topLocations": [
-        { "city": "Colombo", "value": 11 },
-        { "city": "Galle", "value": 2 },
-        { "city": "Velbert", "value": 2 },
-        { "city": "Dehiwala", "value": 1 },
-        { "city": "Handa", "value": 1 },
-        { "city": "London", "value": 1 },
-        { "city": "Malabe", "value": 1 }
+        { "city": "Colombo, Sri Lanka", "value": 11 },
+        { "city": "Galle, Sri Lanka", "value": 2 },
+        { "city": "Velbert, Germany", "value": 2 },
+        { "city": "Dehiwala-Mount Lavinia, Sri Lanka", "value": 1 },
+        { "city": "Handa, Japan", "value": 1 },
+        { "city": "London, UK", "value": 1 },
+        { "city": "Malabe, Sri Lanka", "value": 1 }
       ],
       "trafficByDevice": [
         { "device": "Desktop", "percentage": 50.0 },

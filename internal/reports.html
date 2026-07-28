@@ -216,20 +216,20 @@
   .trend.none { color: var(--khaki); }
 
   /* Charts */
-  .chart-container { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding-top: 20px; }
+  .chart-container { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; padding-top: 12px; }
   .bar-row { display: flex; align-items: center; margin-bottom: 12px; gap: 12px; }
-  .bar-label { width: 80px; font-size: 0.9rem; color: var(--jet-black); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+  .bar-label { width: 120px; font-size: 0.85rem; color: var(--jet-black); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
   .bar-track { flex: 1; background: var(--eggshell); height: 24px; border-radius: 4px; overflow: hidden; position: relative; }
   .bar-fill { background: var(--burnt-sienna); height: 100%; width: 0%; transition: width 1s cubic-bezier(0.25, 1, 0.5, 1); }
-  .bar-value { width: 40px; text-align: right; font-size: 0.9rem; font-weight: 600; color: var(--jet-black); }
+  .bar-value { width: 35px; text-align: right; font-size: 0.9rem; font-weight: 600; color: var(--jet-black); }
 
   .pie-chart {
     width: 150px; height: 150px; border-radius: 50%;
-    background: conic-gradient(var(--hunter-green) 0%, var(--hunter-green) var(--p1, 0%), var(--burnt-sienna) var(--p1, 0%), var(--burnt-sienna) 100%);
     margin: 0 auto 20px;
+    transition: background 0.5s ease;
   }
-  .pie-legend { display: flex; justify-content: center; gap: 20px; }
-  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; }
+  .pie-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.85rem; }
   .legend-color { width: 12px; height: 12px; border-radius: 2px; }
 
   /* Table and List Animations */
@@ -329,13 +329,13 @@
 
     <!-- Search Console -->
     <div class="card col-12" id="search-perf-card">
-      <div class="card-title">Google Search Performance <div class="info-icon"><i data-lucide="info" style="width:18px;height:18px;"></i><span class="tooltip-text">How your website performs on Google Search. Impressions are views, clicks are visits from search, and position is your average ranking.</span></div></div>
+      <div class="card-title">Google Search Performance <div class="info-icon"><i data-lucide="info" style="width:18px;height:18px;"></i><span class="tooltip-text">How your site performs on Google Search. Clicks: visits from search. Imp. (Impressions): views in search results. CTR: click-through rate. Position: average ranking.</span></div></div>
       <div class="stat-row" id="search-perf-content"></div>
     </div>
 
     <!-- Top Queries -->
     <div class="card col-6" id="queries-card">
-      <div class="card-title">Top Search Queries <div class="info-icon"><i data-lucide="info" style="width:18px;height:18px;"></i><span class="tooltip-text">The exact words people typed into Google to find your website.</span></div></div>
+      <div class="card-title">Top Search Queries <div class="info-icon"><i data-lucide="info" style="width:18px;height:18px;"></i><span class="tooltip-text">The exact terms people typed on Google. Clicks: visits to your site from that term. Imp. (Impressions): times your link was seen in search results.</span></div></div>
       <div id="queries-content"></div>
     </div>
 
