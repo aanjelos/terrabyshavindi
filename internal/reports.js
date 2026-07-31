@@ -11,7 +11,7 @@ let lastDisplayed = {
 const GATE_PASSWORD = 'pineappleonpizza';
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (sessionStorage.getItem('clientAuth') === 'true') {
+  if (sessionStorage.getItem('reportsAuth') === 'true') {
     document.getElementById('password-gate').classList.add('hidden');
     initReports();
   }
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function checkPassword() {
   const input = document.getElementById('gate-password').value;
   if (input === GATE_PASSWORD) {
-    sessionStorage.setItem('clientAuth', 'true');
+    sessionStorage.setItem('reportsAuth', 'true');
     document.getElementById('password-gate').classList.add('hidden');
     initReports();
   } else {
@@ -42,7 +42,7 @@ function togglePasswordVisibility() {
 }
 
 function lockReports() {
-  sessionStorage.removeItem('clientAuth');
+  sessionStorage.removeItem('reportsAuth');
   document.getElementById('gate-password').value = '';
   document.getElementById('gate-password').type = 'password';
   document.querySelector('.btn-toggle-password').innerHTML = '<i data-lucide="eye" id="password-eye-icon" style="width:20px;height:20px;"></i>';
