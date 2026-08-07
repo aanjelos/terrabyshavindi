@@ -1,7 +1,7 @@
 window.reportsDataConfig = {
   "billing": {
     "monthlyCharge": {
-      "amount": "Overdue payments: July",
+      "amount": "",
       "dueDate": "Due 28th of Each Month"
     },
     "annualRenewal": {
