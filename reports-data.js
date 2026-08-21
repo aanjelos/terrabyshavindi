@@ -6,7 +6,7 @@ window.reportsDataConfig = {
     },
     "annualRenewal": {
       "amount": "",
-      "date": "September 1, 2026"
+      "date": "September 1, 2027"
     }
   },
   "reports": [
