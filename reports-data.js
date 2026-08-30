@@ -144,21 +144,21 @@ window.reportsDataConfig = {
         "avgEngagementTimeSeconds": 41
       },
       "searchPerformance": {
-        "clicks": 1,
-        "impressions": 209,
-        "ctr": 0.5,
-        "position": 14.2
+        "clicks": 22,
+        "impressions": 657,
+        "ctr": 3.3,
+        "position": 9.5
       },
       "topQueries": [
-        { "query": "terracotta sri lanka", "clicks": 1, "impressions": 25 },
+        { "query": "terracotta sri lanka", "clicks": 1, "impressions": 27 },
+        { "query": "sri lanka a terra", "clicks": 0, "impressions": 129 },
+        { "query": "shavindi", "clicks": 0, "impressions": 12 },
+        { "query": "terracotta tiles dankotuwa price list", "clicks": 0, "impressions": 11 },
+        { "query": "terracotta", "clicks": 0, "impressions": 10 },
         { "query": "construction material suppliers", "clicks": 0, "impressions": 2 },
         { "query": "negombo tile shop", "clicks": 0, "impressions": 2 },
         { "query": "asbestos sheet near me", "clicks": 0, "impressions": 1 },
         { "query": "building products", "clicks": 0, "impressions": 1 },
-        { "query": "buildings", "clicks": 0, "impressions": 1 },
-        { "query": "ou", "clicks": 0, "impressions": 1 },
-        { "query": "photos", "clicks": 0, "impressions": 1 },
-        { "query": "price in sri lanka", "clicks": 0, "impressions": 1 },
         { "query": "raw clay near me", "clicks": 0, "impressions": 1 }
       ],
       "trafficSources": [
