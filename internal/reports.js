@@ -144,7 +144,13 @@ function renderBilling() {
     ? getMonthlyCountdownText()
     : billingData.monthlyCharge.status;
 
-  document.getElementById('bill-monthly-status').innerText = monthlyStatus;
+  const statusEl = document.getElementById('bill-monthly-status');
+  statusEl.innerText = monthlyStatus;
+  if (monthlyStatus && (monthlyStatus.toLowerCase().includes('unpaid') || monthlyStatus.toLowerCase().includes('overdue'))) {
+    statusEl.style.color = '#d9534f';
+  } else {
+    statusEl.style.color = 'var(--jet-black)';
+  }
   document.getElementById('bill-monthly-amount').innerText = billingData.monthlyCharge.amount;
   document.getElementById('bill-monthly-date').innerText = billingData.monthlyCharge.dueDate;
 

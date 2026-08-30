@@ -2,7 +2,9 @@ window.reportsDataConfig = {
   "billing": {
     "monthlyCharge": {
       "amount": "",
-      "dueDate": "Due 28th of Each Month"
+      "dueDate": "Due 28th of Each Month",
+      "useAutoCountdown": false,
+      "status": "Unpaid"
     },
     "annualRenewal": {
       "amount": "",
@@ -130,6 +132,53 @@ window.reportsDataConfig = {
         { "device": "Desktop", "percentage": 50.0 },
         { "device": "Mobile", "percentage": 45.8 },
         { "device": "Tablet", "percentage": 4.2 }
+      ]
+    },
+    {
+      "monthId": "august-2026",
+      "label": "August 2026",
+      "period": "28 July, 2026 - 27 August, 2026",
+      "overview": {
+        "activeUsers": 41,
+        "newUsers": 40,
+        "avgEngagementTimeSeconds": 41
+      },
+      "searchPerformance": {
+        "clicks": 1,
+        "impressions": 209,
+        "ctr": 0.5,
+        "position": 14.2
+      },
+      "topQueries": [
+        { "query": "terracotta sri lanka", "clicks": 1, "impressions": 25 },
+        { "query": "construction material suppliers", "clicks": 0, "impressions": 2 },
+        { "query": "negombo tile shop", "clicks": 0, "impressions": 2 },
+        { "query": "asbestos sheet near me", "clicks": 0, "impressions": 1 },
+        { "query": "building products", "clicks": 0, "impressions": 1 },
+        { "query": "buildings", "clicks": 0, "impressions": 1 },
+        { "query": "ou", "clicks": 0, "impressions": 1 },
+        { "query": "photos", "clicks": 0, "impressions": 1 },
+        { "query": "price in sri lanka", "clicks": 0, "impressions": 1 },
+        { "query": "raw clay near me", "clicks": 0, "impressions": 1 }
+      ],
+      "trafficSources": [
+        { "source": "Google Organic", "value": 25 },
+        { "source": "Direct", "value": 16 },
+        { "source": "ChatGPT", "value": 7 },
+        { "source": "DuckDuckGo", "value": 1 }
+      ],
+      "topLocations": [
+        { "city": "Colombo, Sri Lanka", "value": 18 },
+        { "city": "Melbourne, Australia", "value": 2 },
+        { "city": "Negombo, Sri Lanka", "value": 2 },
+        { "city": "Amsterdam, Netherlands", "value": 1 },
+        { "city": "Boardman, USA", "value": 1 },
+        { "city": "Frankfurt am Main, Germany", "value": 1 },
+        { "city": "Kalutara, Sri Lanka", "value": 1 }
+      ],
+      "trafficByDevice": [
+        { "device": "Desktop", "percentage": 51.2 },
+        { "device": "Mobile", "percentage": 48.8 }
       ]
     }
   ]
