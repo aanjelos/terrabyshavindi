@@ -2,9 +2,7 @@ window.reportsDataConfig = {
   "billing": {
     "monthlyCharge": {
       "amount": "",
-      "dueDate": "Due 28th of Each Month",
-      "useAutoCountdown": false,
-      "status": "Unpaid"
+      "dueDate": "Due 28th of Each Month"
     },
     "annualRenewal": {
       "amount": "",
@@ -180,6 +178,33 @@ window.reportsDataConfig = {
         { "device": "Desktop", "percentage": 51.2 },
         { "device": "Mobile", "percentage": 48.8 }
       ]
+    },
+    {
+      "monthId": "september-2026",
+      "label": "September 2026",
+      "period": "28 August, 2026 - 27 September, 2026",
+      "overview": null,
+      "searchPerformance": {
+        "clicks": 17,
+        "impressions": 543,
+        "ctr": 3.1,
+        "position": 6.9
+      },
+      "topQueries": [
+        { "query": "terracotta sri lanka", "clicks": 1, "impressions": 15 },
+        { "query": "shavindi", "clicks": 0, "impressions": 18 },
+        { "query": "sri lanka a terra", "clicks": 0, "impressions": 11 },
+        { "query": "terracotta", "clicks": 0, "impressions": 8 },
+        { "query": "terracotta tiles chennai price list", "clicks": 0, "impressions": 4 },
+        { "query": "building", "clicks": 0, "impressions": 3 },
+        { "query": "construction material suppliers near me", "clicks": 0, "impressions": 2 },
+        { "query": "roofing tiles clay", "clicks": 0, "impressions": 2 },
+        { "query": "building material suppliers", "clicks": 0, "impressions": 1 },
+        { "query": "sun light", "clicks": 0, "impressions": 1 }
+      ],
+      "trafficSources": [],
+      "topLocations": [],
+      "trafficByDevice": []
     }
   ]
 };
