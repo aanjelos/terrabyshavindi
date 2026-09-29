@@ -183,7 +183,11 @@ window.reportsDataConfig = {
       "monthId": "september-2026",
       "label": "September 2026",
       "period": "28 August, 2026 - 27 September, 2026",
-      "overview": null,
+      "overview": {
+        "activeUsers": 37,
+        "newUsers": 38,
+        "avgEngagementTimeSeconds": 14
+      },
       "searchPerformance": {
         "clicks": 17,
         "impressions": 543,
@@ -202,9 +206,25 @@ window.reportsDataConfig = {
         { "query": "building material suppliers", "clicks": 0, "impressions": 1 },
         { "query": "sun light", "clicks": 0, "impressions": 1 }
       ],
-      "trafficSources": [],
-      "topLocations": [],
-      "trafficByDevice": []
+      "trafficSources": [
+        { "source": "Google Organic", "value": 26 },
+        { "source": "Direct", "value": 15 },
+        { "source": "ChatGPT", "value": 3 },
+        { "source": "Bing", "value": 1 }
+      ],
+      "topLocations": [
+        { "city": "Colombo, Sri Lanka", "value": 11 },
+        { "city": "London, UK", "value": 3 },
+        { "city": "Chicago, USA", "value": 2 },
+        { "city": "Bath, UK", "value": 1 },
+        { "city": "Dehiwala-Mount Lavinia, Sri Lanka", "value": 1 },
+        { "city": "Edinburgh, UK", "value": 1 },
+        { "city": "Itabashi City, Japan", "value": 1 }
+      ],
+      "trafficByDevice": [
+        { "device": "Mobile", "percentage": 56.8 },
+        { "device": "Desktop", "percentage": 43.2 }
+      ]
     }
   ]
 };
