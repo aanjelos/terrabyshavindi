@@ -1,7 +1,7 @@
 window.reportsDataConfig = {
   "billing": {
     "monthlyCharge": {
-      "amount": "",
+      "amount": "Payment pending: October",
       "dueDate": "Due 28th of Each Month"
     },
     "annualRenewal": {
@@ -224,6 +224,54 @@ window.reportsDataConfig = {
       "trafficByDevice": [
         { "device": "Mobile", "percentage": 56.8 },
         { "device": "Desktop", "percentage": 43.2 }
+      ]
+    },
+    {
+      "monthId": "october-2026",
+      "label": "October 2026",
+      "period": "28 September, 2026 - 27 October, 2026",
+      "overview": {
+        "activeUsers": 40,
+        "newUsers": 39,
+        "avgEngagementTimeSeconds": 57
+      },
+      "searchPerformance": {
+        "clicks": 22,
+        "impressions": 696,
+        "ctr": 3.2,
+        "position": 6.1
+      },
+      "topQueries": [
+        { "query": "shavindi", "clicks": 1, "impressions": 19 },
+        { "query": "terracotta sri lanka", "clicks": 0, "impressions": 12 },
+        { "query": "terracotta", "clicks": 0, "impressions": 7 },
+        { "query": "building", "clicks": 0, "impressions": 6 },
+        { "query": "raw materials", "clicks": 0, "impressions": 4 },
+        { "query": "material", "clicks": 0, "impressions": 3 },
+        { "query": "mastrial", "clicks": 0, "impressions": 2 },
+        { "query": "terracotta water filter", "clicks": 0, "impressions": 2 },
+        { "query": "terracotta products", "clicks": 0, "impressions": 2 },
+        { "query": "terracotta tiles sri lanka", "clicks": 0, "impressions": 2 }
+      ],
+      "trafficSources": [
+        { "source": "Google Organic", "value": 30 },
+        { "source": "Direct", "value": 15 },
+        { "source": "ChatGPT", "value": 2 },
+        { "source": "Bing", "value": 1 }
+      ],
+      "topLocations": [
+        { "city": "Colombo, Sri Lanka", "value": 16 },
+        { "city": "Doha, Qatar", "value": 2 },
+        { "city": "Negombo, Sri Lanka", "value": 2 },
+        { "city": "Toronto, Canada", "value": 2 },
+        { "city": "Bangkok, Thailand", "value": 1 },
+        { "city": "Canning, Australia", "value": 1 },
+        { "city": "Chula Vista, USA", "value": 1 }
+      ],
+      "trafficByDevice": [
+        { "device": "Desktop", "percentage": 50.0 },
+        { "device": "Mobile", "percentage": 45.0 },
+        { "device": "Tablet", "percentage": 5.0 }
       ]
     }
   ]
